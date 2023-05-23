@@ -39,6 +39,17 @@
             @enderror
         </div>
 
+        <div class="mb-3">
+            <label for="type_id">Tipologia</label>
+            <select name="type_id" id="type_id" class="w-100">
+                <option value=""></option>
+
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}" {{'type_id' == old('type_id')}}>{{$type->name}}</option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="d-flex justify-content-center">
 
             <a href="{{route('admin.projects.show', $project)}}" class="btn btn-secondary border m-3">Annulla</a>

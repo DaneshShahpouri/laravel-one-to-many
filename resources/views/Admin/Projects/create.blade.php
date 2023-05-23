@@ -37,6 +37,17 @@
             @enderror
         </div>
 
+        <div class="mb-3">
+            <label for="type_id">Tipologia</label>
+            <select name="type_id" id="type_id" class="w-100">
+                <option value=""></option>
+
+                @foreach ($types as $type)
+                    <option value="{{$type->id}}" {{'type_id' == old('type_id')}}>{{$type->name}}</option>
+                @endforeach
+            </select>
+        </div>
+
         <input type="submit" class="btn btn-primary" value="Crea">
     </form>
 </div>

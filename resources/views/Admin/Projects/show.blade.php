@@ -9,7 +9,7 @@
         <div id="layer"></div>
     </div>
     
-    <h6 class="text-mute"> <strong>Tipo:</strong>{{$project->type->name}}</h6>
+    <h6 class="text-mute"> <strong>Tipo:</strong>{{$project->type->name ?? 'Nessuna'}}</h6>
 
     <div class="container d-flex flex-column justify-content-center align-items-center mt-5">
         <h4 class="card-text">Panoramica</h4>

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1 class="my-4 text-center">Aggiungi un nuovo Progetto</h1>
+    <h1 class="my-4 text-center">Modifica Progetto</h1>
    <form action="{{route('admin.projects.update', $project->slug)}}" method="POST">
     @csrf
     @method('PUT')
@@ -42,10 +42,9 @@
         <div class="mb-3">
             <label for="type_id">Tipologia</label>
             <select name="type_id" id="type_id" class="w-100">
-                <option value=""></option>
-
+                <option></option>
                 @foreach ($types as $type)
-                    <option value="{{$type->id}}" {{'type_id' == old('type_id')}}>{{$type->name}}</option>
+                    <option value="{{$type->id}}" {{$type->id == old('type_id') ? 'selected' : ($type->id == $project->type_id ? 'selected' : '')}}>{{$type->name}}</option>
                 @endforeach
             </select>
         </div>

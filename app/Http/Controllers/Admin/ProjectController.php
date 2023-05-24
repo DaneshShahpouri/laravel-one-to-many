@@ -116,14 +116,16 @@ class ProjectController extends Controller
     {
         $formData = $request->all();
         $validator = Validator::make($formData, [
-            'title' => 'required|unique:projects|max:150',
+            'title' => 'required|unique:projects,id|max:150',
             'description' => 'required',
             'year' => 'nullable|max:4',
+            'type_id' => 'nullable|exists:projects,id'
         ], [
             'title.required' => "Titolo necessario per continuare",
-            'title.max' => "Titolo troppo lungo, non deve superare i 150 caratteri",
+            'title.max' => "Titolo troppo lungo, non deve superare i :max caratteri",
             'title.unique' => "Titolo già presente nel database",
-            'description.required' => "Descrizione necessaria per continuare"
+            'description.required' => "Descrizione necessaria per continuare",
+            'type_id.exists' => 'Tipo già presente.'
         ])->validate();
         return $validator;
     }

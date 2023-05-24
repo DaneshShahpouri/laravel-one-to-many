@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TypeController;
 use App\Http\Controllers\ProfileController;
 use GuzzleHttp\Middleware;
 use Illuminate\Auth\Events\Verified;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     function () {
         Route::resource('projects', ProjectController::class)->parameters(['projects' => 'project:slug']);
+        Route::resource('types', TypeController::class)->parameters(['types' => 'type:slug']);
 
         Route::get('/', function () {
             return view('admin.dashboard');
